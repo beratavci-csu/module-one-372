@@ -17,6 +17,7 @@ public class BankAccount {
 		this.lastName = lastName;		
 		this.accountID = accountID;
 		this.balance = 0;
+		
 	}
 	
 
