@@ -147,21 +147,21 @@ public class BankAccount {
 
 
 	public static void main(String[] args) {
-		BankAccount myBalance = new BankAccount("Jane", "Doe", 434543);
-		System.out.println(Arrays.toString(myBalance.accountSummary()));
+		BankAccount myBalanceSuper = new BankAccount("Jane", "Doe", 64091265);
+		System.out.println(Arrays.toString(myBalanceSuper.accountSummary()));
 
-		System.out.println(myBalance.withdrawal(10));
-		System.out.println(myBalance.setFirstName("John"));
-		System.out.println(myBalance.setLastName("Doe"));
-		System.out.println(myBalance.setAccontID(64521265));
-		System.out.println(myBalance.deposit(120));
-		System.out.println(myBalance.deposit(50));
-		System.out.println(myBalance.getFirstName());
-		System.out.println(myBalance.getLastName());
-		System.out.println(myBalance.getAccountID());
-		System.out.println(myBalance.getBalance());
+		System.out.println(myBalanceSuper.withdrawal(10));
+		System.out.println(myBalanceSuper.setFirstName("John"));
+		System.out.println(myBalanceSuper.setLastName("Doe"));
+		System.out.println(myBalanceSuper.setAccontID(64521265));
+		System.out.println(myBalanceSuper.deposit(120));
+		System.out.println(myBalanceSuper.deposit(50));
+		System.out.println(myBalanceSuper.getFirstName());
+		System.out.println(myBalanceSuper.getLastName());
+		System.out.println(myBalanceSuper.getAccountID());
+		System.out.println(myBalanceSuper.getBalance());
 		
-		System.out.println(Arrays.toString(myBalance.accountSummary()));
+		System.out.println(Arrays.toString(myBalanceSuper.accountSummary()));
 		
 		
 	}

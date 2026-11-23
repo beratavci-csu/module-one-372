@@ -61,6 +61,7 @@ public class CheckingAccount extends BankAccount {
 		System.out.println(myBalance.setAccontID(123456789));
 		System.out.println(myBalance.deposit(120));
 		System.out.println(myBalance.processWithdrawal(200.00));
+		System.out.println(myBalance.deposit(520));
 		System.out.println(myBalance.getFirstName());
 		System.out.println(myBalance.getLastName());
 		System.out.println(myBalance.getAccountID());
