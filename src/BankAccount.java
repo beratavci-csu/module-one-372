@@ -1,20 +1,12 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
 
 
 public class BankAccount {
 	
-	private String firstName;
-	private String lastName;
-	private int accountID;
-	private double balance;
-	
-	
-	public BankAccount () {
-		this.balance = 0.0;
-	}
+	protected  String firstName;
+	protected String lastName;
+	protected int accountID;
+	protected  double balance;
 	
 	
 	public BankAccount (String firstName, String lastName, int accountID) {
@@ -25,22 +17,21 @@ public class BankAccount {
 	}
 		
 	
-	
     public String deposit(double moneyIn) {
-        try { {
-            	this.balance = moneyIn + balance;
-                return "You have deposited: $" + moneyIn;
-            }
+        try {
+            balance = moneyIn + balance;
+               return "You have deposited: $" + moneyIn + ". \nYour new balance is: $" + balance;
+           
         } catch (Exception e) {
             return "ERROR Deposit Failed: " + e.getMessage();
         }
     }
     
     public String withdrawal(double moneyOut) {
-        try { {
-        	this.balance = balance - moneyOut;
-                return "You have withdrawm: $" + moneyOut;
-            }
+        try {
+        	balance = balance - moneyOut;
+             return "You have withdrawm: $" + moneyOut + ". \nYour new balance is: $" + balance;
+           
         } catch (Exception e) {
             return "ERROR Withdrawal Failed: " + e.getMessage();
         }
@@ -48,7 +39,7 @@ public class BankAccount {
     
     public String setFirstName(String firstName) {
         try {
-            if (firstName != null && !firstName.isEmpty()) {
+            if (accountID != 0) {
             	this.firstName = firstName;
                 return "New First name: " + firstName;
             } else {
@@ -61,7 +52,7 @@ public class BankAccount {
     
     public String setLastName(String lastName) {
         try {
-            if (lastName != null && !lastName.isEmpty()) {
+            if (accountID != 0) {
             	this.lastName = lastName;
                 return "New Last name: " + lastName;
             } else {
@@ -87,7 +78,7 @@ public class BankAccount {
     
     public String getBalance() {
         try {
-            if (firstName != null && !firstName.isEmpty()) {
+            if (accountID != 0) {
                 return "Account Balance: $" + balance;
             } else {
                 return "Account does not exist";
@@ -109,8 +100,8 @@ public class BankAccount {
     }
     public String getFirstName() {
         try {
-            if (firstName != null && !firstName.isEmpty()) {
-                return "First Name " + firstName;
+            if (accountID != 0) {
+                return "First Name: " + firstName;
             } else {
                 return "Account does not exist";
             }
@@ -121,8 +112,8 @@ public class BankAccount {
 	
     public String getLastName() {
         try {
-            if (lastName != null && !lastName.isEmpty()) {
-                return "Last Name " + lastName;
+            if (accountID != 0) {
+                return "Last Name: " + lastName;
             } else {
                 return "Account does not exist";
             }
@@ -134,12 +125,18 @@ public class BankAccount {
 	
 	public String[] accountSummary() {
         try {
-            String[] info = new String[4];
-            info[0] = "First name: " + firstName;
-            info[1] = "Last name: " + lastName;
-            info[2] = "Account ID: " + accountID;
-            info[3] = "Account Balance: $" + balance;
-            return info;
+        	 String[] info = new String[4];
+            if (accountID != 0) {
+                info[0] = "First name: " + firstName;
+                info[1] = "Last name: " + lastName;
+                info[2] = "Account ID: " + accountID;
+                info[3] = "Account Balance: $" + this.balance;
+                return info;
+            } else {
+            	String[] error = new String[1];
+            	error[0] = ("ACCOUNT DOE NOT EXIST");
+                return error;
+            }
         } catch (Exception e) {
             String[] error = new String[1];
             error[0] = "ERROR Failed to account summary " + e.getMessage();
@@ -150,23 +147,31 @@ public class BankAccount {
 
 
 	public static void main(String[] args) {
-		BankAccount myBalance = new BankAccount("Jane", "Doe", 434543);
+		BankAccount myBalance1 = new BankAccount("Jane", "Doe", 434543);
+		//System.out.println(myBalance.firstName);
+		//System.out.println(myBalance.lastName);
+		//System.out.println(myBalance.accountID);
+		//System.out.println(myBalance.balance);
+		System.out.println(Arrays.toString(myBalance1.accountSummary()));
+		System.out.println(myBalance1.deposit(120));
+		System.out.println(myBalance1.balance);
+		System.out.println(myBalance1.deposit(50));
+		System.out.println(myBalance1.balance);
+		System.out.println(myBalance1.withdrawal(10));
+		System.out.println(myBalance1.balance);
+		System.out.println(myBalance1.setFirstName("John"));
+		System.out.println(myBalance1.setLastName("Doe"));
+		System.out.println(myBalance1.setAccontID(64521265));
+
+
+
+
+		System.out.println(myBalance1.getFirstName());
+		System.out.println(myBalance1.getLastName());
+		System.out.println(myBalance1.getAccountID());
+		System.out.println(myBalance1.getBalance());
 		
-		System.out.println(myBalance.deposit(55.55));
-		System.out.println(myBalance.withdrawal(00.55));
-		System.out.println(myBalance.setFirstName("John"));
-		System.out.println(myBalance.setLastName("Doe"));
-		System.out.println(myBalance.setAccontID(64521265));
-
-
-
-
-		System.out.println(myBalance.getFirstName());
-		System.out.println(myBalance.getLastName());
-		System.out.println(myBalance.getAccountID());
-		System.out.println(myBalance.getBalance());
-		
-		System.out.println(Arrays.toString(myBalance.accountSummary()));
+		System.out.println(Arrays.toString(myBalance1.accountSummary()));
 		
 		
 	}
